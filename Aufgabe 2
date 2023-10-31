@@ -1,0 +1,63 @@
+// ja/nein Abfrage
+Console.WriteLine("Möchten Sie eine Anzahlung von 1.500 Euro leisten?");
+string eingabe = (Console.ReadLine());
+
+//feste Werte
+
+double basis = 249.00;
+double aufpreis = 0;
+double rabatt = 0;
+
+// Abfrage
+
+Console.WriteLine("Wie viel Kilometerleistung jährlich");
+
+Console.OutputEncoding = System.Text.Encoding.UTF8; // zeigt das Euro-Zeichen 
+
+
+int Kilometerleistung = Convert.ToInt32(Console.ReadLine());
+
+//Basisrate
+Console.WriteLine($"Basisrate:{basis,20:f2}€");
+
+// Berechnung des Rabatts
+
+if (eingabe == "ja" && Kilometerleistung <= 10000)
+{
+
+    rabatt = basis * 0.20;
+    Console.WriteLine("Reduzierung:" + $"{-rabatt,18:f2}€");
+}
+else if (eingabe == "ja" && Kilometerleistung > 10000)
+{
+
+    rabatt = basis * 0.10;
+    Console.WriteLine("Reduzierung:" + $"{-rabatt,18:f2}€");
+}
+
+//Berechnung des Aufpreises
+
+if (Kilometerleistung >= 10001 && Kilometerleistung <= 20000)
+
+{
+    aufpreis = 25;
+    Console.WriteLine("Aufpreis:" + $"{aufpreis,21:f2}€");
+}
+else if (Kilometerleistung >20000)
+{
+    aufpreis = 50.00;
+
+    Console.WriteLine("Aufpreis:" + $"{aufpreis,21:f2}€");
+}
+
+// Berechnungen
+
+double leasingrate = basis + aufpreis - rabatt;
+double gesammtleasingpreis = leasingrate * 24;
+
+// Ausgaben
+
+Console.WriteLine("--------------------------------");
+Console.WriteLine("Leasingrate: " + $"{leasingrate,17 :f2}€");
+Console.WriteLine("Gesammtleasingpreis:" + $"{gesammtleasingpreis,10 :f2}€");
+
